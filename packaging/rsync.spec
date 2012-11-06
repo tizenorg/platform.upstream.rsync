@@ -1,7 +1,3 @@
-#
-# Please submit bugfixes or comments via http://bugs.tizen.org/
-#
-
 Name:           rsync
 Version:        3.0.8
 Release:        1
@@ -42,11 +38,12 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+
+%docs_package
+
 %files
 %defattr(-,root,root,-)
-%doc COPYING README
+%doc COPYING 
 %{_bindir}/rsync
-%doc %{_mandir}/man1/rsync.1*
-%doc %{_mandir}/man5/rsyncd.conf.5*
 
 
