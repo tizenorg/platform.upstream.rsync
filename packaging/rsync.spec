@@ -6,6 +6,7 @@ Summary:        A program for synchronizing files over a network
 Url:            http://rsync.samba.org/
 Group:          Applications/Internet
 Source0:        http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
+Source1001: 	rsync.manifest
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig(popt)
@@ -29,6 +30,7 @@ Support filrs for rsync
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 
@@ -42,6 +44,7 @@ make %{?_smp_mflags}
 %docs_package
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %doc COPYING 
 %{_bindir}/rsync
