@@ -1,12 +1,13 @@
 Name:           rsync
-Version:        3.0.8
-Release:        1
+Version:        3.1.1
+Release:        0
 License:        GPL-3.0+
 Summary:        A program for synchronizing files over a network
 Url:            http://rsync.samba.org/
+#X-Vcs-Url:     git://git.samba.org/rsync
 Group:          Applications/Internet
 Source0:        http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
-Source1001: 	rsync.manifest
+Source1001:     rsync.manifest
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig(popt)
@@ -23,7 +24,7 @@ package.
 %package support
 Summary:        Support files for rsync
 Group:          Applications/System
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 
 %description support
 Support filrs for rsync
@@ -35,7 +36,7 @@ cp %{SOURCE1001} .
 %build
 
 %configure --disable-static
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 %install
 %make_install
@@ -46,7 +47,6 @@ make %{?_smp_mflags}
 %files
 %manifest %{name}.manifest
 %defattr(-,root,root,-)
-%doc COPYING 
+%license COPYING
 %{_bindir}/rsync
-
 
