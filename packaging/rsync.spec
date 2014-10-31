@@ -5,7 +5,7 @@ License:        GPL-3.0+
 Summary:        A program for synchronizing files over a network
 Url:            http://rsync.samba.org/
 #X-Vcs-Url:     git://git.samba.org/rsync
-Group:          Applications/Internet
+Group:          Base/Utilities
 Source0:        http://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
 Source1001:     rsync.manifest
 BuildRequires:  libacl-devel
@@ -23,7 +23,7 @@ package.
 
 %package support
 Summary:        Support files for rsync
-Group:          Applications/System
+Group:          Base/Utilities
 Requires:       %{name} = %{version}-%{release}
 
 %description support
@@ -35,7 +35,8 @@ cp %{SOURCE1001} .
 
 %build
 
-%configure --disable-static
+%reconfigure
+make reconfigure
 %__make %{?_smp_mflags}
 
 %install
