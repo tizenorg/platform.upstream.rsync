@@ -208,6 +208,8 @@ proto.h: proto.h-tstamp
 proto.h-tstamp: $(srcdir)/*.c $(srcdir)/lib/compat.c config.h
 	perl $(srcdir)/mkproto.pl $(srcdir)/*.c $(srcdir)/lib/compat.c
 
+rsync.h: proto.h
+
 man: rsync.1 rsyncd.conf.5 man-copy
 
 man-copy:
